@@ -192,6 +192,8 @@ This method removes a value from the list by its index
 	@debug un-utils.char(f10); // "\f10"
 	```
 
+## Utils for RTLCSS plugin
+
 ### dir
 - **Type:** `function`
 
