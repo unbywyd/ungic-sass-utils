@@ -194,6 +194,54 @@ This method removes a value from the list by its index
 
 ## Utils for RTLCSS plugin
 
+**Note!** These tools use comments as required by the [RTLCSS](https://rtlcss.com/) plugin, and therefore, in order for this to work, you need to enable the "save comments" option in the sass compiler!
+
+**Webpack** and **sass-loader** the configuration could be as follows:
+
+```js
+module: {
+    rules: [
+        {
+            test: /\.scss$/,
+            use: [
+                "style-loader",
+                {
+                    loader: "css-loader",
+                    options: {
+                    url: false,
+                    import: false,
+                    },
+                },
+                {
+                    loader: "postcss-loader",
+                    options: {
+                    postcssOptions: (loaderContext) => {
+                        let plugins = [
+                            require("postcss-rtl")(), // you can use this plugin, it also uses the RTLCSS plugin
+                            require("autoprefixer")()
+                        ]
+                        return {
+                            plugins
+                        }
+                    
+                    }
+                },
+                {
+                    loader: "sass-loader",
+                    options: {
+                        implementation: require("sass"),
+                        sassOptions: {
+                            outputStyle: "expanded", // Perhaps this can also help keep the structure of the comments
+                            sourceComments: true // Saving comments 
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
+```
+
 ### dir
 - **Type:** `function`
 
