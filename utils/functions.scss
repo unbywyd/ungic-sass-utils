@@ -64,11 +64,11 @@
 @function merge($maps...) {
   $result: ();
 
-  @if (length($maps) > 1) {
+  @if (list.length($maps) > 1) {
     @each $map in $maps {
       $result: deep-merge($result, $map);
     }
-  } @else if(length($maps) ==1) {
+  } @else if(list.length($maps) ==1) {
     $result: list.nth($maps, 1);
   }
 
