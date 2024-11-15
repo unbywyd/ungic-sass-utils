@@ -1,6 +1,6 @@
 {
   "name": "ungic-sass-utils",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Dart SASS module which contains a set of helper methods.",
   "main": "index.js",
   "scripts": {
